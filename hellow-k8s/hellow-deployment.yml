@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellow-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellow-deployment
+  template:
+    metadata:
+      labels:
+        app: hellow-deployment
+    spec:
+      containers:
+      - name: hellow-deployment
+        image: ralphmigotto/hellow
+        ports:
+        - containerPort: 8000
+        resources:
+             requests:
+                memory: "200Mi"
+                cpu: "10m"
+             limits:
+                memory: "1200Mi"
+                cpu: "1500m"        
+        env:
+          - name: VAR_1
+            valueFrom:
+              configMapKeyRef:
+                name: hellow-configmap
+                key: var_1
+          - name: VAR_2
+            valueFrom:
+              configMapKeyRef:
+                name: hellow-configmap
+                key: var_2
+          - name: VAR_3
+            valueFrom:
+              configMapKeyRef:
+                name: hellow-configmap
+                key: var_3

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hellow-configmap
+data:
+  var_1: Estou rodando em K8S |
+  var_2: Recruitment SRE
+  var_3: Challenge
+  
